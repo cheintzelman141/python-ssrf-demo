@@ -1,0 +1,14 @@
+
+    Directory: D:\CHRIS_1991\python_ssrf-demo
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          12/28/2025 12:44 PM                .github
+d----          12/28/2025 12:54 PM                .pytest_cache
+d----          12/28/2025 12:55 PM                app
+d----          12/28/2025 12:54 PM                tests
+-a---          12/28/2025 12:47 PM            313 .semgrep.yml
+-a---          12/28/2025 12:57 PM              0 dir.txt
+-a---          12/28/2025 12:51 PM           3606 README.md
+-a---          12/28/2025 12:46 PM            117 requirements.txt
+
