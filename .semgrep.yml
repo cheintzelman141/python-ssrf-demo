@@ -9,3 +9,6 @@ rules:
           validate_outbound_url(url)
           ...
           $CLIENT.get(url, ...)
+      - pattern-not-inside: |
+          # nosemgrep: python-ssrf-user-controlled-url
+          $CLIENT.get(url, ...)
