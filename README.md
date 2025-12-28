@@ -50,41 +50,28 @@ SSRF can allow attackers to:
 
 ```http
 GET /v1/fetch?url=http://example.com
-Vulnerable Behavior
+```
 
-The application:
+Vulnerable behavior:
 
-Accepts an arbitrary url parameter
+- Accepts an arbitrary `url` parameter
+- Makes an outbound HTTP request directly
+- Performs no validation on scheme, host, or destination IP
 
-Makes an outbound HTTP request directly
+Example exploit:
 
-Performs no validation on scheme, host, or destination IP
-
-Example Exploit
+```
 GET /v1/fetch?url=http://localhost/internal/secret
-Mitigations Applied
+```
 
-The secure implementation enforces:
+Mitigations applied (secure implementation enforces):
 
-✅ Only http / https schemes allowed
-
-✅ Hostname required
-
-✅ Explicit blocking of localhost
-
-✅ DNS resolution of target host
-
-✅ Rejection of:
-
-private IPs
-
-loopback addresses
-
-link-local ranges
-
-reserved IP ranges
-
-✅ Redirects disabled to prevent bypass
+- ✅ Only http / https schemes allowed
+- ✅ Hostname required
+- ✅ Explicit blocking of localhost
+- ✅ DNS resolution of target host
+- ✅ Rejection of private/loopback/link-local/reserved IP ranges
+- ✅ Redirects disabled to prevent bypass
 
 Validation occurs before any outbound request is made.
 

@@ -1,11 +1,11 @@
 rules:
   - id: python-ssrf-user-controlled-url
-    message: "Possible SSRF: user-controlled URL used in outbound request"
+    message: "Possible SSRF: user-controlled URL used in outbound request without validation"
     severity: ERROR
     languages: [python]
     patterns:
-      - pattern: |
-          $CLIENT.get($URL, ...)
-      - metavariable-regex:
-          metavariable: $URL
-          regex: ".*url.*"
+      - pattern: $CLIENT.get(url, ...)
+      - pattern-not-inside: |
+          validate_outbound_url(url)
+          ...
+          $CLIENT.get(url, ...)

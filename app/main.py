@@ -32,6 +32,7 @@ def get_outbound_client() -> httpx.AsyncClient:
 async def fetch(url: str = Query(..., description="URL to fetch (vulnerable)")):
     try:
         async with get_outbound_client() as client:
+            # nosemgrep: python-ssrf-user-controlled-url
             r = await client.get(url)
             return {"status": r.status_code, "body": r.text[:500]}
     except Exception as e:
