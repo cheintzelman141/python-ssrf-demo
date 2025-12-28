@@ -106,7 +106,7 @@ flowchart LR
     I -- Yes --> J[Blocked: HTTP 400]
     I -- No --> K[Outbound Request Allowed]
     K --> L[External Resource]
-
+```
 
 This approach:
 
@@ -159,12 +159,15 @@ blocks unsafe changes before merge
 This is how AppSec scales beyond one-off fixes.
 
 Running Locally
+
+```bash
 python -m venv .venv
 # Windows:
 .venv\Scripts\activate
 pip install -r requirements.txt
 pytest -q
 uvicorn app.main:app --reload
+```
 
 
 Then visit:
